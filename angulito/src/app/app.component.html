@@ -1,0 +1,39 @@
+<h1 class="titulo">Bienvenido al formulario con Angular</h1>
+<section class="orden">
+  <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" alt="logo de Angular">
+  <form class="color" (ngSubmit)="guardarDatos()" #form="ngForm">
+    <label class="txt">
+      Nombre:
+      <input type="text" id="name" required [(ngModel)]="formulario.name" name="name">
+    </label>
+    <br>
+    <label class="txt">
+      Apellido:
+      <input type="text" id="ape" required [(ngModel)]="formulario.ape" name="ape">
+    </label>
+    <br>
+    <label class="txt">
+      Edad:
+      <input type="number" id="age" min="1" required [(ngModel)]="formulario.age" name="age">
+    </label>
+    <br>
+    <label class="txt">
+      Cedula:
+      <input type="number" id="cc" required [(ngModel)]="formulario.cc" name="cc">
+    </label>
+    <br>
+    <button class="btn_g" type="submit">Enviar</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let persona of personas; let i = index">
+      {{ persona.name }} {{ persona.ape }} {{ persona.age }} {{ persona.cc }}
+      <button class="btn_e" (click)="borrar(i)">Borrar usuario</button>
+    </li>
+  </ul>
+
+  <p>Ahora somos {{ contarMayoresEdad() }} mayores de edad</p>
+  <p>Ahora somos {{ contarMenoresEdad() }} menores de edad</p>
+</section>
+
+<router-outlet></router-outlet>
